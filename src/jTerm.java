@@ -3,7 +3,7 @@ import javax.swing.*;
 public class jTerm {
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame ("MyPanel");
+        JFrame frame = new JFrame ("jTerm");
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         Console con = new Console();
         frame.getContentPane().add(con);

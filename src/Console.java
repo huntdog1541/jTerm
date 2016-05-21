@@ -23,6 +23,12 @@ public class Console extends JPanel {
         submitButton = new JButton ("Submit");
         CommandList = new JList (CommandListItems);
 
+        //Color for JPanel
+        //setOpaque(true);
+        //setBackground(Color.BLACK);
+
+        textArea.setBackground(Color.GRAY);
+
         //set components properties
         CommandList.setToolTipText ("List of Commands");
 
@@ -41,6 +47,17 @@ public class Console extends JPanel {
         jcomp2.setBounds (10, 390, 490, 25);
         submitButton.setBounds (510, 390, 100, 25);
         CommandList.setBounds (510, 5, 265, 200);
+
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String st = jcomp2.getText();
+                String empty = null;
+                jcomp2.setText(empty);
+                textArea.append("\n" + st + "\n");
+                PerformAction(st);
+            }
+        });
     }
 
     public void addText(String str)
@@ -48,4 +65,8 @@ public class Console extends JPanel {
         textArea.append(str);
     }
 
+    private void PerformAction(String str)
+    {
+        new Command_Execute(str, textArea);
+    }
 }
